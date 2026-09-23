@@ -10,7 +10,7 @@ package_name = 'hw2_answer'
 setup(
     name=package_name,
     version='0.0.0',
-    packages=[package_name],
+    packages=[package_name, package_name + '.log_odds_mapping'],
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
@@ -28,6 +28,7 @@ setup(
     entry_points={
         'console_scripts': [
             'simple_mapping = hw2_answer.simple_mapping:main',
+            'log_odds_mapping = hw2_answer.log_odds_mapping.log_odds_mapping:main',
         ],
     },
 )

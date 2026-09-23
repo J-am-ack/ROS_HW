@@ -1,7 +1,5 @@
 # HW2: Laser Occupancy-Grid Mapping
-> first edition
 
-by Jiaming Yang
 ## Data and method
 
 The bag at `/hw2_data` contains LaserScan, IMU, and Odometry data. The basic
@@ -38,6 +36,17 @@ source /opt/ros/humble/setup.bash
 source install/setup.bash
 ros2 launch hw2_answer hw2_cartographer.launch.py
 ```
+
+## Run the log-odds voting map
+
+```bash
+ros2 launch hw2_answer hw2_log_odds.launch.py
+```
+
+Unlike endpoint voting, this method casts every valid laser ray through the
+grid. Cells before the return receive free-space evidence and the endpoint
+receives occupied-space evidence. Evidence is accumulated as bounded log odds,
+then converted to occupancy probability for `/map`.
 
 ## Comparison
 

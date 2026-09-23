@@ -9,6 +9,10 @@ import tf_transformations
 from tf2_ros import TransformBroadcaster
 from message_filters import Subscriber, ApproximateTimeSynchronizer
 
+
+# basic 9.23
+
+#
 class GridMapping(Node):
     def __init__(self):
         super().__init__('grid_voting')
