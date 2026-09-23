@@ -1,0 +1,36 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Views
+    Name: Views
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Map
+      Name: Occupancy Map
+      Enabled: true
+      Topic:
+        Value: /map
+      Alpha: 1
+      Color Scheme: map
+      Use Timestamp: false
+    - Class: rviz_default_plugins/Path
+      Name: Odometry Path
+      Enabled: true
+      Topic:
+        Value: /hw2/path
+      Color: 255; 85; 0
+      Line Style: Billboards
+      Line Width: 0.05
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1
+  Global Options:
+    Fixed Frame: map
+    Background Color: 48; 48; 48
+    Frame Rate: 30
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Scale: 30

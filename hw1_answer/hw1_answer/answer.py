@@ -1,5 +1,8 @@
 """Publish planar dead-reckoning odometry from the homework sensor data."""
 
+
+# finished 9.23 by yangjm
+
 import math
 
 import rclpy
@@ -8,11 +11,14 @@ from nav_msgs.msg import Odometry
 from rclpy.node import Node
 
 
+
+# 从Node类继承好之后，主要把航位推算写进来
 class DeadReckoningNode(Node):
     """Convert heading and encoder displacement samples to odometry."""
 
     def __init__(self):
         super().__init__('answer')
+        # 订阅和发布话题qwq
         self.subscription = self.create_subscription(
             Deadreckoning,
             '/hw1/deadreckoning_data',
