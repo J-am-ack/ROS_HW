@@ -140,12 +140,14 @@ class ScanPerception:
             and result.left_opening < cfg.passage_clearance
             and result.right_opening < cfg.passage_clearance)
         result.obstacle_front = (
-            result.corridor_detected
+            (result.corridor_detected or left_wall or right_wall)
             and front < cfg.obstacle_trigger_distance
             and result.front_blocked_ratio < cfg.obstacle_local_ratio_max
             and max(fl, fr) > cfg.passage_clearance
-            and not (result.left_corner_detected
-                     or result.right_corner_detected))
+            and (not (result.left_corner_detected
+                      or result.right_corner_detected)
+                 or result.front_blocked_ratio <
+                 cfg.obstacle_corner_override_ratio))
 
         # Maximise the low percentile of a rolling angular window, with a
         # mild preference for driving straight in open areas.

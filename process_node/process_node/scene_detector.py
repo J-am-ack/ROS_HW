@@ -23,12 +23,14 @@ class SceneDetector:
             return SceneType.UNKNOWN
         if p.dead_end_detected:
             return SceneType.DEAD_END
+        # A narrow obstacle in front of an opening can resemble a corner.
+        # Perception marks only strongly localized blockage as an override.
+        if p.obstacle_front:
+            return SceneType.OBSTACLE
         if p.left_corner_detected:
             return SceneType.LEFT_CORNER
         if p.right_corner_detected:
             return SceneType.RIGHT_CORNER
-        if p.obstacle_front:
-            return SceneType.OBSTACLE
         if p.corridor_detected:
             return SceneType.CORRIDOR
         if p.front_distance > self.cfg.front_safe_distance:
